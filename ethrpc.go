@@ -476,3 +476,11 @@ func (rpc *EthRPC) EthGetLogs(params FilterParams) ([]Log, error) {
 	err := rpc.call("eth_getLogs", &logs, params)
 	return logs, err
 }
+
+// PerNewAddress returns a new address
+func (rpc *EthRPC) PerNewAddress(password string) (string, error) {
+	var address string
+
+	err := rpc.call("personal_newAccount", &address, password)
+	return address, err
+}
